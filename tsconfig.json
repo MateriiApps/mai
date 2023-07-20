@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "lib": [
+      "esnext",
+      "esnext.array",
+      "esnext.asynciterable",
+      "esnext.symbol"
+    ],
+    "module": "es2022",
+    "moduleResolution": "node",
+    "strict": true,
+    "noImplicitAny": false,
+    "target": "ESNEXT",
+    "outDir": "dist"
+  },
+  "include": [
+    "src/**/*"
+  ]
+}

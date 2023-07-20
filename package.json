@@ -1,0 +1,20 @@
+{
+  "name": "mai",
+  "version": "1.0.0",
+  "description": "i love exploding materii",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "pnpm build && node .",
+    "build": "tsc --build"
+  },
+  "author": "rushii (https://github.com/rushiiMachine)",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "@sapphire/framework": "^4.5.0",
+    "discord.js": "14.x"
+  },
+  "devDependencies": {
+    "typescript": "^5.1.6"
+  }
+}
