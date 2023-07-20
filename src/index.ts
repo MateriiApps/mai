@@ -5,6 +5,8 @@ import * as process from "process";
 const client = new SapphireClient({
     defaultPrefix: ["v", "m", "~"],
     loadMessageCommandListeners: true,
+    caseInsensitiveCommands: true,
+    caseInsensitivePrefixes: true,
     intents: [
         GatewayIntents.Guilds,
         GatewayIntents.GuildMembers,

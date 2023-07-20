@@ -13,6 +13,7 @@
     "strict": true,
     "noImplicitAny": false,
     "target": "ESNEXT",
+    "rootDir": "src",
     "outDir": "dist"
   },
   "include": [
