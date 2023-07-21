@@ -1,6 +1,7 @@
 import { SapphireClient } from "@sapphire/framework";
 import { GatewayIntentBits as GatewayIntents, Options } from 'discord.js'
 import * as process from "process";
+import { initAndroidxRssTimer } from "./androidxRss.js";
 
 const client = new SapphireClient({
     defaultPrefix: ["v", "m", "~"],
@@ -18,5 +19,7 @@ const client = new SapphireClient({
         MessageManager: 0,
     })
 })
+
+client.on("ready", initAndroidxRssTimer)
 
 await client.login(process.env.TOKEN);
