@@ -5,7 +5,7 @@ on your device for further debugging. (Do **NOT** apply **ANY** filters!)
 
 You will need:
 - A computer
-- ADB installed ([Windows tutorial](https://streamable.com/h0618w))
+- ADB installed ([Windows tutorial](<https://streamable.com/h0618w>))
 
 1. Enable USB debugging in your phone's developer options
 2. Run the following command in a terminal (cmd for Windows):

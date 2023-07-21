@@ -1,0 +1,1 @@
+https://cdn.discordapp.com/emojis/1062093977525948487.webp?size=48&name=guh%7E1&quality=lossless
