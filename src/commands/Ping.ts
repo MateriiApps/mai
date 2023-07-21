@@ -10,6 +10,7 @@ export class Ping extends Command {
             name: "ping",
             aliases: ["wing"],
             description: "ping pong wing wong",
+            requiredClientPermissions: ["SendMessages"],
         });
     }
 

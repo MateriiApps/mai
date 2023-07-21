@@ -10,6 +10,7 @@ export class Faq extends Command {
             ...options,
             name: "faq",
             description: "Retrieve an faq",
+            requiredClientPermissions: ["SendMessages"],
         });
     }
 

@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "pnpm build && node .",
-    "build": "tsc --build"
+    "build": "tsc --build",
+    "clean": "rm -rf dist"
   },
   "author": "rushii (https://github.com/rushiiMachine)",
   "license": "GPL-3.0",

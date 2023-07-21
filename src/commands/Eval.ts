@@ -4,6 +4,7 @@ import { Args, Command } from "@sapphire/framework";
 import { IsOwner } from "../preconditions/IsOwner";
 import { codeBlock, Message } from "discord.js";
 import { inspect } from "util";
+import { log } from "node:console"
 
 // Credit: https://codeberg.org/Ven/Vaius/src/commit/cd42a0ec59b03783cec678c911651f3ef02174ad/src/commands/eval.ts
 
@@ -13,11 +14,18 @@ export class Eval extends Command {
             ...options,
             name: "eval",
             preconditions: ["IsOwner"],
+            requiredClientPermissions: ["SendMessages"],
         });
     }
 
     override async messageRun(message: Message, args: Args) {
         await message.channel.sendTyping();
+
+        let code = await args.rest('string').catch(_ => null);
+        if (!code) return;
+        if (code.includes("await")) code = `(async () => { ${code} })()`;
+
+        log(`Running eval by ${message.author.username} (${message.author.id}): ${code}`);
 
         // Provide utils in eval context
         const console: any = {
@@ -36,12 +44,6 @@ export class Eval extends Command {
         const { client, channel, author, content, guild, member } = message;
         // noinspection JSUnusedLocalSymbols
         const Discord = await import("discord.js");
-
-        let code = await args.rest('string').catch(_ => null);
-        if (!code) return;
-        if (code.includes("await")) code = `(async () => { ${code} })()`;
-
-        console.log(`Running eval by ${message.author.username} (${message.author.id}): ${code}`);
 
         let result;
         try {
