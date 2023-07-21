@@ -14,7 +14,7 @@ const client = new SapphireClient({
         GatewayIntents.MessageContent
     ],
     makeCache: Options.cacheWithLimits({
-        GuildMemberManager: 0,
+        GuildMemberManager: 10,
         MessageManager: 0,
     })
 })
