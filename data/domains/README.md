@@ -1,0 +1,1 @@
+Borrowed from https://codeberg.org/Ven/Vaius/src/commit/fd6af1f54fcd4d40f3b6e572c85bbaaf8ee406f7/data/annoying-domains

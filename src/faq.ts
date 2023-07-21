@@ -1,13 +1,13 @@
 import sanitize from "sanitize-filename";
 import { readdir, readFile } from "node:fs/promises";
 
-const INLINE_LINK_REGEX = new RegExp("\\[.+?\\]\\((.+?)\\)", "g");
+const INLINE_LINK_REGEX = /\[.+?\\]\((.+?)\)/g;
 
 export async function getFaq(name: string, stripInlineLinks: boolean = false): Promise<string | null> {
     const path = `./data/faq/${sanitize(name)}.md`
 
     try {
-        let content = await readFile(path, { encoding: "utf-8" });
+        let content = await readFile(path, "utf-8");
 
         if (stripInlineLinks) {
             content = content.replaceAll(INLINE_LINK_REGEX, "<$1>");
