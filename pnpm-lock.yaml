@@ -17,6 +17,9 @@ dependencies:
   sanitize-filename:
     specifier: ^1.6.3
     version: 1.6.3
+  short-number:
+    specifier: ^1.0.7
+    version: 1.0.7
   xml-js:
     specifier: ^1.6.11
     version: 1.6.11
@@ -367,6 +370,10 @@ packages:
 
   /sax@1.2.4:
     resolution: {integrity: sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==}
+    dev: false
+
+  /short-number@1.0.7:
+    resolution: {integrity: sha512-e3cb811QXHiAH2H5rgZwXHsmg2+aG6XK0QyKF/+pyDIZFBSz/G8bkr8avdBrL5PVIfhIq8rlohjFvSB3azzpEQ==}
     dev: false
 
   /streamsearch@1.1.0:

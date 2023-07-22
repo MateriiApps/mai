@@ -16,6 +16,7 @@
     "discord.js": "14.x",
     "node-html-parser": "^6.1.5",
     "sanitize-filename": "^1.6.3",
+    "short-number": "^1.0.7",
     "xml-js": "^1.6.11"
   },
   "devDependencies": {
