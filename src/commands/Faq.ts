@@ -2,7 +2,7 @@
 
 import { ApplicationCommandRegistry, Args, ChatInputCommand, Command } from "@sapphire/framework";
 import { ChatInputCommandInteraction, Message } from "discord.js";
-import { getAllFaqs, getFaq } from "../faq.js";
+import { getAllFaqs, getFaq } from "../faq";
 
 export class Faq extends Command {
     public constructor(ctx: Command.Context, options: Command.Options) {

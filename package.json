@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
-    "start": "pnpm build && node .",
+    "start": "pnpm build && node --experimental-specifier-resolution=node .",
     "build": "tsc --build",
     "clean": "rm -rf dist"
   },

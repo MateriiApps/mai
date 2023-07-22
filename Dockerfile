@@ -13,4 +13,4 @@ ADD ./package.json ./pnpm-lock.yaml ./data ./
 RUN pnpm i --frozen-lockfile
 COPY --from=builder /app/dist ./
 
-CMD ["node", "."]
+CMD ["pnpm", "start"]

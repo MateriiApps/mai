@@ -2,7 +2,7 @@
 
 import { ApplicationCommandRegistry, Args, Command } from "@sapphire/framework";
 import { ChatInputCommandInteraction, Message, TextChannel } from "discord.js";
-import { sleep } from "../util.js";
+import { sleep } from "../util";
 
 export class Purge extends Command {
     public constructor(ctx: Command.Context, options: Command.Options) {

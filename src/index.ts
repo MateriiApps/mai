@@ -1,7 +1,7 @@
 import { SapphireClient } from "@sapphire/framework";
 import { GatewayIntentBits as GatewayIntents, Options } from 'discord.js'
 import * as process from "process";
-import { initAndroidxRssTimer } from "./androidxRss.js";
+import { initAndroidxTimer } from "./androidx";
 
 if (!process.env.TOKEN) throw "missing env variables";
 
@@ -22,6 +22,6 @@ const client = new SapphireClient({
     })
 })
 
-client.on("ready", initAndroidxRssTimer)
+client.on("ready", initAndroidxTimer)
 
 await client.login(process.env.TOKEN);

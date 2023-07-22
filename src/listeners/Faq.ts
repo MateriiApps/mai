@@ -2,7 +2,7 @@
 
 import { Events, Listener } from "@sapphire/framework";
 import { Message } from "discord.js";
-import { getFaq } from "../faq.js";
+import { getFaq } from "../faq";
 
 export class FaqListener extends Listener {
     public constructor(ctx: Listener.Context, options: Listener.Options) {
