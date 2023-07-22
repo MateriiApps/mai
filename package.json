@@ -5,8 +5,9 @@
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
-    "start": "pnpm build && node --no-warnings --experimental-specifier-resolution=node .",
     "build": "tsc --build",
+    "start": "node --no-warnings --experimental-specifier-resolution=node .",
+    "dev": "pnpm build && pnpm run",
     "clean": "rm -rf dist"
   },
   "author": "rushii (https://github.com/rushiiMachine)",

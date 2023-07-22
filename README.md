@@ -25,7 +25,8 @@ $ pnpm start
 
 | name             | type        | description                                           |
 |------------------|-------------|-------------------------------------------------------|
-| TOKEN            | string      | Discord bot token                                     |
+| DISCORD_TOKEN    | string      | Discord bot token                                     |
+| GITHUB_TOKEN     | string      | Readonly Github PAT for fetching MateriiApps info     |
 | OWNERS           | Snowflake[] | User id list separated by comma                       |
 | ANDROIDX_CHANNEL | Snowflake   | Channel id for sending androidx release changelogs in |
 | ANDROIDX_ROLE    | Snowflake   | Role id to mention with the aforementioned changelogs |                                               

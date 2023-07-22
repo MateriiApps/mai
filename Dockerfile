@@ -17,6 +17,7 @@ RUN pnpm build
 
 # RUNNER
 FROM node:18-alpine
+ENV NODE_ENV production
 
 WORKDIR /app
 RUN npm i -g pnpm@8.6.9
@@ -29,4 +30,4 @@ RUN pnpm install --offline --frozen-lockfile --prod
 
 COPY --from=builder /app/dist ./
 
-CMD ["pnpm", "start"]
+ENTRYPOINT ["node", "--no-warnings", "--experimental-specifier-resolution=node", "."]

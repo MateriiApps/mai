@@ -24,5 +24,5 @@ const client = new SapphireClient({
 
 client.on("ready", initAndroidxTimer)
 
-if (!process.env.TOKEN) throw "missing env variables";
-await client.login(process.env.TOKEN);
+if (!process.env.DISCORD_TOKEN) throw "missing env variables";
+await client.login(process.env.DISCORD_TOKEN);
