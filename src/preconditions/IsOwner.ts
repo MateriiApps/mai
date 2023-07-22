@@ -1,12 +1,9 @@
 import { Command, Precondition } from "@sapphire/framework";
 import { CommandInteraction, Message, Snowflake } from "discord.js";
+import * as process from "process";
 import ContextMenuCommandInteraction = Command.ContextMenuCommandInteraction;
 
-const OWNERS = [
-    "295190422244950017", // Wing
-    "423915768191647755", // Xinto
-    "295190422244950017", // rushii
-]
+const OWNERS = (process.env.OWNERS as string).split(",");
 
 export class IsOwner extends Precondition {
     public override async messageRun(message: Message) {
