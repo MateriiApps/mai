@@ -1,6 +1,6 @@
-import { AttachmentBuilder, Client, EmbedBuilder, TextChannel } from "discord.js";
+import { Client, EmbedBuilder, TextChannel } from "discord.js";
 import { Element, xml2js } from "xml-js";
-import nodeHtmlToImage from "node-html-to-image";
+import { parse } from "node-html-parser";
 import * as process from "process";
 
 const ANDROIDX_CHANNEL = process.env.ANDROIDX_CHANNEL!;
@@ -56,20 +56,19 @@ async function checkRss(discord: Client) {
         const newTopic = `Last update: ${updatedAt}`;
         if (androidxChannel.topic === newTopic) return;
 
-        // Render the html to an image
-        const image = await renderHtml(html);
+        // Extract the changelog items
+        const changelog = parse(html).querySelectorAll("ul > li > a")
+            .map(el => `- [${el.innerText}](${el.attributes["href"]})`)
+            .join("\n")
 
         // Post update to channel
-        const attachment = new AttachmentBuilder(image, { name: "changelog.png" });
         const embed = new EmbedBuilder()
             .setTitle("Found a new update!")
-            .setDescription(title)
             .setURL(url)
-            .setImage("attachment://changelog.png");
+            .setDescription(`**${title}**\n\n${changelog}`)
         await androidxChannel.send({
             content: `<@&${ANDROIDX_NOTIFICATIONS_ROLE}>`,
             embeds: [embed],
-            files: [attachment],
             allowedMentions: {
                 roles: [ANDROIDX_NOTIFICATIONS_ROLE],
             },
@@ -80,35 +79,4 @@ async function checkRss(discord: Client) {
     } catch (e) {
         console.error(e);
     }
-}
-
-async function renderHtml(html: string): Promise<Buffer> {
-    const styles: string = `<style>
-        a {
-            color: white;
-            text-decoration: none;
-            font-family: Arial,sans-serif;
-            font-size: 1.5em;
-        }
-        ul {
-            list-style: none;
-        }
-        li::before {
-            content: "\\2022";
-            color: lightgray;
-            font-weight: bold;
-            display: inline-block;
-            width: 1em;
-            font-size: 2em;
-            margin-left: -1em;
-        }
-    </style>`;
-
-    return await nodeHtmlToImage({
-        type: "png",
-        transparent: true,
-        waitUntil: "domcontentloaded",
-        selector: "ul",
-        html: styles + html,
-    }) as Buffer;
 }
