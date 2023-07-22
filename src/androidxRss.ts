@@ -1,9 +1,12 @@
 import { AttachmentBuilder, Client, EmbedBuilder, TextChannel } from "discord.js";
 import { Element, xml2js } from "xml-js";
 import nodeHtmlToImage from "node-html-to-image";
+import * as process from "process";
 
-const ANDROIDX_CHANNEL = "1131820006208979047";
-const ANDROIDX_NOTIFICATIONS_ROLE = "1131999257294028950";
+const ANDROIDX_CHANNEL = process.env.ANDROIDX_CHANNEL!;
+const ANDROIDX_NOTIFICATIONS_ROLE = process.env.ANDROIDX_ROLE!;
+
+if (!ANDROIDX_CHANNEL || !ANDROIDX_NOTIFICATIONS_ROLE) throw "missing env variables";
 
 export function initAndroidxRssTimer(discord: Client) {
     const HALF_DAY = 1000 * 60 * 60 * 12;

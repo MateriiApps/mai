@@ -3,6 +3,8 @@ import { GatewayIntentBits as GatewayIntents, Options } from 'discord.js'
 import * as process from "process";
 import { initAndroidxRssTimer } from "./androidxRss.js";
 
+if (!process.env.TOKEN) throw "missing env variables";
+
 const client = new SapphireClient({
     defaultPrefix: ["v", "m", "~"],
     loadMessageCommandListeners: true,

@@ -3,6 +3,7 @@ import { CommandInteraction, Message, Snowflake } from "discord.js";
 import * as process from "process";
 import ContextMenuCommandInteraction = Command.ContextMenuCommandInteraction;
 
+if (!process.env.OWNERS) throw "missing env variables";
 const OWNERS = (process.env.OWNERS as string).split(",");
 
 export class IsOwner extends Precondition {
@@ -26,6 +27,7 @@ export class IsOwner extends Precondition {
 }
 
 declare module '@sapphire/framework' {
+    // noinspection JSUnusedGlobalSymbols
     interface Preconditions {
         "IsOwner": never;
     }
