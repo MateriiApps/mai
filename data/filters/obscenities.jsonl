@@ -1,0 +1,5 @@
+{"match": "faggot", "result": "ban"}
+{"match": "fag", "result": "delete"}
+{"match": "nigga", "result": "ban"}
+{"match": "nigger", "result": "ban"}
+{"match": "kys", "result": "delete"}

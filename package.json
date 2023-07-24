@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc --build",
     "start": "node --no-warnings --experimental-specifier-resolution=node .",
-    "dev": "pnpm build && pnpm run",
+    "dev": "pnpm build && pnpm start",
     "clean": "rm -rf dist"
   },
   "author": "rushii (https://github.com/rushiiMachine)",

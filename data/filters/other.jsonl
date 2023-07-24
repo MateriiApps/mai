@@ -1,0 +1,5 @@
+{"match": "https://%", "result": "delete"}
+{"match": "discord.gg/%", "result": "delete"}
+{"match": "\u200B", "result": "delete"}
+{"regex": "^I am (\\d|1[012])( years)?( old)?$", "flags": "i", "result": "delete"}
+{"regex": "tenor\\.com.*?meat", "flags": "i", "result": "delete"}
