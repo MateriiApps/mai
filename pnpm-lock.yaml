@@ -14,12 +14,18 @@ dependencies:
   node-html-parser:
     specifier: ^6.1.5
     version: 6.1.5
+  parse-duration:
+    specifier: ^1.1.0
+    version: 1.1.0
   sanitize-filename:
     specifier: ^1.6.3
     version: 1.6.3
   short-number:
     specifier: ^1.0.7
     version: 1.0.7
+  snowflake-regex:
+    specifier: ^1.0.4
+    version: 1.0.4
   xml-js:
     specifier: ^1.6.11
     version: 1.6.11
@@ -337,6 +343,10 @@ packages:
       boolbase: 1.0.0
     dev: false
 
+  /parse-duration@1.1.0:
+    resolution: {integrity: sha512-z6t9dvSJYaPoQq7quMzdEagSFtpGu+utzHqqxmpVWNNZRIXnvqyCvn9XsTdh7c/w0Bqmdz3RB3YnRaKtpRtEXQ==}
+    dev: false
+
   /peek-readable@5.0.0:
     resolution: {integrity: sha512-YtCKvLUOvwtMGmrniQPdO7MwPjgkFBtFIrmfSbYmYuq3tKDV/mcfAhBth1+C3ru7uXIZasc/pHnb+YDYNkkj4A==}
     engines: {node: '>=14.16'}
@@ -374,6 +384,10 @@ packages:
 
   /short-number@1.0.7:
     resolution: {integrity: sha512-e3cb811QXHiAH2H5rgZwXHsmg2+aG6XK0QyKF/+pyDIZFBSz/G8bkr8avdBrL5PVIfhIq8rlohjFvSB3azzpEQ==}
+    dev: false
+
+  /snowflake-regex@1.0.4:
+    resolution: {integrity: sha512-PBqXgijEYs4mjpmJi4a+AN1rorMpkYQw2AdlkwMaqr3fLW7qRu77qDuYfUfHB6+mC0aPIBqKm9zCCS/HRE7aOA==}
     dev: false
 
   /streamsearch@1.1.0:

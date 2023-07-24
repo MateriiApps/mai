@@ -6,7 +6,7 @@ import * as process from "process";
 const ANDROIDX_CHANNEL = process.env.ANDROIDX_CHANNEL!;
 const ANDROIDX_NOTIFICATIONS_ROLE = process.env.ANDROIDX_ROLE!;
 
-if (!ANDROIDX_CHANNEL || !ANDROIDX_NOTIFICATIONS_ROLE) throw "missing env variables";
+if (!ANDROIDX_CHANNEL || !ANDROIDX_NOTIFICATIONS_ROLE) throw "missing env ANDROIDX_CHANNEL or ANDROIDX_NOTIFICATIONS_ROLE";
 
 export function initAndroidxTimer(discord: Client) {
     const HALF_DAY = 1000 * 60 * 60 * 12;

@@ -3,7 +3,7 @@ import { CommandInteraction, Message, Snowflake } from "discord.js";
 import * as process from "process";
 import ContextMenuCommandInteraction = Command.ContextMenuCommandInteraction;
 
-if (!process.env.OWNERS) throw "missing env variables";
+if (!process.env.OWNERS) throw "missing env OWNERS";
 const OWNERS = (process.env.OWNERS as string).split(",");
 
 export class IsOwner extends Precondition {

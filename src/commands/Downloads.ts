@@ -86,7 +86,7 @@ export class Downloads extends Command {
         `;
 
         const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-        if (!GITHUB_TOKEN) throw "missing env variables";
+        if (!GITHUB_TOKEN) throw "missing env GITHUB_TOKEN";
 
         const res = await fetch("https://api.github.com/graphql", {
             method: "POST",
