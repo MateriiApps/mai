@@ -2,7 +2,10 @@
 
 import { ApplicationCommandRegistry, Args, Command } from "@sapphire/framework";
 import { ChatInputCommandInteraction, Message, Snowflake } from "discord.js";
-import snowflakeRegex from 'snowflake-regex';
+import snowflakeRegexModule from "snowflake-regex";
+
+// @ts-ignore Broken typings
+const snowflakeRegex = snowflakeRegexModule.default;
 
 export const PASSPORT_USERS: Snowflake[] = [];
 
