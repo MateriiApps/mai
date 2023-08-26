@@ -28,6 +28,7 @@ RUN pnpm fetch --prod
 COPY package.json ./
 RUN pnpm install --offline --frozen-lockfile --prod
 
-COPY --from=builder /app/dist ./
+COPY ./data ./data
+COPY --from=builder /app/dist ./dist
 
 ENTRYPOINT ["node", "--no-warnings", "--experimental-specifier-resolution=node", "."]
