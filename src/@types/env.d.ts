@@ -8,5 +8,6 @@ declare namespace NodeJS {
         ANDROIDX_CHANNEL?: string;
         ANDROIDX_ROLE?: string;
         AGE_REQUIREMENT?: string;
+        LOG_LEVEL?: string;
     }
 }
