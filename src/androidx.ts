@@ -55,18 +55,33 @@ async function checkRss(discord: Client) {
         .map(el => `- [${el.innerText}](${el.attributes["href"]})`)
         .join("\n")
 
+    // Split the description to remain under the embed character limit
+    const embeds: string[] = [""];
+    for (const line of `**${title}**\n\n${changelog}`.split("\n")) {
+        const lastEmbed = embeds.at(-1)!;
+
+        if (lastEmbed.length + 1 + line.length <= 4096) {
+            embeds[embeds.length - 1] = lastEmbed + "\n" + line;
+        } else {
+            embeds.push(line);
+        }
+    }
+
     // Post update to channel
-    const embed = new EmbedBuilder()
-        .setTitle("Found a new update!")
-        .setURL(url)
-        .setDescription(`**${title}**\n\n${changelog}`)
-    await androidxChannel.send({
-        content: `<@&${ANDROIDX_NOTIFICATIONS_ROLE}>`,
-        embeds: [embed],
-        allowedMentions: {
-            roles: [ANDROIDX_NOTIFICATIONS_ROLE],
-        },
-    });
+    for (const [i, embedContent] of embeds.entries()) {
+        const embed = new EmbedBuilder()
+            .setTitle(i == 0 ? "Found a new update!" : null)
+            .setURL(url)
+            .setDescription(embedContent);
+        await androidxChannel.send({
+            content: i == 0 ? `<@&${ANDROIDX_NOTIFICATIONS_ROLE}>` : undefined,
+            embeds: [embed],
+            allowedMentions: {
+                roles: [ANDROIDX_NOTIFICATIONS_ROLE],
+            },
+        });
+    }
+
     await androidxChannel.setTopic(newTopic);
 
     console.log("Posted new androidx changelog!");
