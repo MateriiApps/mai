@@ -1,6 +1,6 @@
 // noinspection JSUnusedGlobalSymbols
 
-import { Events, Listener } from "@sapphire/framework";
+import { container, Events, Listener } from "@sapphire/framework";
 import { Message } from "discord.js";
 import { readdir, readFile } from "node:fs/promises";
 
@@ -39,7 +39,7 @@ export class ImageHostsListener extends Listener {
             .map(d => d.replace(domainRegex, "\\$&"));
 
         this.imageHostRegex = new RegExp(`https?://(\\w+\\.)?(${domains.join("|")})`, "i");
-        console.log(`Loaded ${domains.length} dumb image hosts`);
+        container.logger.info(`Parsed ${domains.length} dumb image hosts`);
     }
 
     override async run(message: Message) {

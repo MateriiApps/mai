@@ -3,9 +3,6 @@ import { LogLevel, SapphireClient } from "@sapphire/framework";
 import { initAndroidxTimer } from "./androidx";
 import { PlainLogger } from "./utils/logger";
 
-process.on("uncaughtException", console.error);
-process.on("unhandledRejection", console.error);
-
 const loggerLevel = LogLevel[process.env.LOG_LEVEL || "Info"] ?? null;
 if (loggerLevel === null) throw "invalid env LOG_LEVEL";
 
@@ -26,6 +23,9 @@ const client = new SapphireClient({
     }),
     logger: { instance: new PlainLogger(loggerLevel) },
 })
+
+process.on("uncaughtException", client.logger.error);
+process.on("unhandledRejection", client.logger.error);
 
 client.on("ready", initAndroidxTimer)
 

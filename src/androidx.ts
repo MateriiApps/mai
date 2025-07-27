@@ -11,13 +11,13 @@ if (!ANDROIDX_CHANNEL || !ANDROIDX_NOTIFICATIONS_ROLE) throw "missing env ANDROI
 export function initAndroidxTimer(discord: Client) {
     const HALF_DAY = 1000 * 60 * 60 * 12;
     setInterval(function run() {
-        checkRss(discord).catch(e => console.error("Failed to process androidx rss!", e))
+        checkRss(discord).catch(e => discord.logger.error("Failed to process androidx rss!", e))
         return run;
     }(), HALF_DAY)
 }
 
 async function checkRss(discord: Client) {
-    console.log("Checking androidx release notes");
+    discord.logger.debug("Checking androidx release notes");
 
     // Fetch channel
     const androidxChannel = await discord.channels.fetch(ANDROIDX_CHANNEL) as TextChannel
@@ -81,8 +81,6 @@ async function checkRss(discord: Client) {
             },
         });
     }
-
     await androidxChannel.setTopic(newTopic);
-
-    console.log("Posted new androidx changelog!");
+    discord.logger.info("Posted new androidx changelog!");
 }
