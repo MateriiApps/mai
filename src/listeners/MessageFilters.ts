@@ -22,7 +22,10 @@ interface RegexFilter {
     result: Result;
 }
 
-enum Result {
+type Result = { action: ResultAction.Mute, duration: string | null } |
+    { action: Exclude<ResultAction, ResultAction.Mute> };
+
+enum ResultAction {
     Delete,
     Mute,
     Kick,
@@ -62,18 +65,18 @@ export class MessageFilters extends Listener {
                 }
                 if (!matches) continue;
 
-                const reason = `Filter "${filterName}" from ${groupName}`;
+                const reason = `Triggered filter "${filterName}" from ${groupName}`;
 
-                switch (filter.result) {
-                    case Result.Ban:
+                switch (filter.result.action) {
+                    case ResultAction.Ban:
                         await message.member!.ban({ reason });
                         break;
-                    case Result.Kick:
+                    case ResultAction.Kick:
                         await message.member!.kick(reason);
                         break;
-                    case Result.Mute:
-                        // TODO: add duration option only to mute
-                        await message.member!.timeout(parseDuration("1h")!, reason);
+                    case ResultAction.Mute:
+                        const durationMs = parseDuration(filter.result.duration ?? "5m");
+                        await message.member!.timeout(durationMs, reason);
                         break;
                 }
 
@@ -89,30 +92,34 @@ export class MessageFilters extends Listener {
         const groups: [string, Filter[]][] = await Promise.all(files.map(async file => {
             const path = `./data/filters/${file}`;
             const filters = (await readFile(path, "utf-8"))
+                .trim()
                 .split("\n")
                 .filter(Boolean)
                 .map(line => JSON.parse(line))
-                .map(filter => {
-                    let result: Result;
+                .map((filter: any) => {
+                    let action: ResultAction;
                     switch (filter.result.toLowerCase()) {
                         case "ban":
-                            result = Result.Ban;
+                            action = ResultAction.Ban;
                             break;
                         case "kick":
-                            result = Result.Kick;
+                            action = ResultAction.Kick;
                             break;
                         case "mute":
-                            result = Result.Mute;
+                            action = ResultAction.Mute;
                             break;
                         case "delete":
-                            result = Result.Delete;
+                            action = ResultAction.Delete;
                             break;
                         default:
                             throw `Invalid result type ${filter.result} in ${file}!`;
                     }
 
                     return {
-                        result,
+                        result: {
+                            action,
+                            ...(action === ResultAction.Mute && { duration: filter.duration ?? null }),
+                        },
                         ...(filter.match && { match: filter.match }),
                         ...(filter.regex && { regex: new RegExp(filter.regex, filter.flags) })
                     }
