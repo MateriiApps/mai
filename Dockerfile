@@ -1,5 +1,5 @@
 # BUILDER
-FROM --platform=$BUILDPLATFORM node:18-alpine as builder
+FROM --platform=$BUILDPLATFORM node:22-alpine as builder
 
 WORKDIR /app
 RUN npm i -g pnpm@8.6.9
@@ -26,4 +26,4 @@ COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/dist ./dist
 
 ENV NODE_ENV="production"
-ENTRYPOINT ["node", "--no-warnings", "--experimental-specifier-resolution=node", "."]
+ENTRYPOINT ["node", "--no-warnings", "--import=extensionless/register", "."]

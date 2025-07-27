@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "tsc --build",
-    "start": "node --no-warnings --experimental-specifier-resolution=node .",
+    "start": "node --no-warnings --import=extensionless/register .",
     "dev": "pnpm build && pnpm start",
     "clean": "rm -rf dist"
   },
@@ -23,7 +23,11 @@
     "xml-js": "^1.6.11"
   },
   "devDependencies": {
+    "extensionless": "^1.9.9",
     "typescript": "^5.1.6"
   },
-  "packageManager": "pnpm@8.6.9"
+  "engines": {
+    "node": ">=22"
+  },
+  "engineStrict": true,
 }
