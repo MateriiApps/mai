@@ -1,5 +1,6 @@
-{"match": "faggot", "result": "ban"}
-{"match": "fag", "result": "delete"}
+{"match": "faggot", "result": "mute", "duration": "1h"}
+{"match": "fag", "result": "mute", "duration": "5m"}
+{"match": "tranny", "result": "mute", "duration": "6h"}
 {"match": "nigga", "result": "ban"}
 {"match": "nigger", "result": "ban"}
 {"match": "kys", "result": "delete"}

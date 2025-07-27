@@ -1,6 +1,5 @@
 {"match": "you can choose any skin for yourself", "result": "ban"}
-{"match": "get 3 months of discord nitro", "result": "mute"}
-{"match": "get discord nitro for free", "result": "mute"}
+{"match": "get 3 months of discord nitro", "result": "kick"}
 {"match": "free 3 months of discord nitro", "result": "kick"}
 {"match": "free discord nitro airdrop", "result": "ban"}
 {"match": "steam is giving away 3 months of discord nitro for free to all no limited steam users", "result": "ban"}
@@ -12,7 +11,7 @@
 {"match": "discocd", "result": "ban"}
 {"match": "dlscord", "result": "ban"}
 {"match": "program which gives you discord nitro", "result": "ban"}
-{"match": "Steam is giving away", "result": "ban"}
+{"match": "Steam is giving away", "result": "kick"}
 {"match": "Discord Nitro for free", "result": "ban"}
 {"match": "Hi im find work generator", "result": "ban"}
 {"match": "dlscorld", "result": "ban"}
@@ -24,7 +23,7 @@
 {"match": "steam gived nitro", "result": "ban"}
 {"match": "discord nitro distribution from steam", "result": "ban"}
 {"match": "discord nitro giving away", "result": "ban"}
-{"match": "disrcods", "result": "ban"}
+{"match": "disrcods", "result": "mute", "duration": "30m"}
 {"match": "Discord Nitro for Free - Steam Store", "result": "delete"}
 {"match": "gifts-discord.xyz", "result": "ban"}
 {"match": "new nft game!!!", "result": "ban"}
@@ -97,7 +96,7 @@
 {"match": "discorb.co", "result": "ban"}
 {"match": "discorb.ru.com", "result": "ban"}
 {"match": "discorcl.click", "result": "ban"}
-{"match": "discorcl.link", "result": "mute"}
+{"match": "discorcl.link", "result": "ban"}
 {"match": "discord.blog", "result": "delete"}
 {"match": "discord.shop", "result": "ban"}
 {"match": "discordgivenitro.com", "result": "ban"}

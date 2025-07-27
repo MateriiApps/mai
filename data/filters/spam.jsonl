@@ -2,5 +2,5 @@
 {"match": "<ewd:publickey", "result": "delete"}
 {"match": "attention citizen! 市民请注意!", "result": "delete"}
 {"regex": "copy ?(and )?paste.* every (discord|server)", "flags": "i", "result": "kick"}
-{"regex": ".*@everyone.*?https?://.*", "flags": "i", "result": "ban"}
-{"regex": "@(?:here|everyone).*?youtu.?be", "flags": "i", "result": "ban"}
+{"regex": "@(here|everyone) https?://", "flags": "i", "result": "ban"}
+{"regex": "@(here|everyone) https?://youtu\\.?be", "flags": "i", "result": "ban"}
