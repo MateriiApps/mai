@@ -1,5 +1,6 @@
 # BUILDER
-FROM --platform=$BUILDPLATFORM node:22-alpine as builder
+# Node LTS jod (v22)
+FROM --platform=$BUILDPLATFORM node:jod-alpine as builder
 
 WORKDIR /app
 RUN npm i -g corepack
