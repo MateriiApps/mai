@@ -5,7 +5,7 @@ import { Message } from "discord.js";
 import { getFaq } from "../faq";
 
 export class FaqListener extends Listener {
-    public constructor(ctx: Listener.Context, options: Listener.Options) {
+    public constructor(ctx: Listener.LoaderContext, options: Listener.Options) {
         super(ctx, {
             ...options,
             event: Events.MessageCreate,

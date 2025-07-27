@@ -2,10 +2,10 @@
 FROM --platform=$BUILDPLATFORM node:22-alpine as builder
 
 WORKDIR /app
-RUN npm i -g pnpm@8.6.9
+RUN npm i -g corepack
 
 COPY pnpm-lock.yaml package.json ./
-RUN pnpm install --frozen-lockfile --shamefully-hoist
+RUN corepack install && pnpm install --frozen-lockfile --shamefully-hoist
 
 COPY ./tsconfig.json ./
 COPY ./src ./src

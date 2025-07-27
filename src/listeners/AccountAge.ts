@@ -7,7 +7,7 @@ import * as process from "process";
 import { PASSPORT_USERS } from "../commands/Passport";
 
 export class AccountAge extends Listener {
-    public constructor(ctx: Listener.Context, options: Listener.Options) {
+    public constructor(ctx: Listener.LoaderContext, options: Listener.Options) {
         super(ctx, {
             ...options,
             event: Events.GuildMemberAdd,

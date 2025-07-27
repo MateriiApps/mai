@@ -9,7 +9,7 @@ import { readdir, readFile } from "node:fs/promises";
 export class ImageHostsListener extends Listener {
     imageHostRegex?: RegExp
 
-    public constructor(ctx: Listener.Context, options: Listener.Options) {
+    public constructor(ctx: Listener.LoaderContext, options: Listener.Options) {
         super(ctx, {
             ...options,
             event: Events.MessageCreate,

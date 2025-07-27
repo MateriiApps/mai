@@ -11,7 +11,7 @@ export class MentionLimit extends Listener {
     // Author user id -> mention count
     readonly MENTIONS: Record<Snowflake, number> = {};
 
-    public constructor(ctx: Listener.Context, options: Listener.Options) {
+    public constructor(ctx: Listener.LoaderContext, options: Listener.Options) {
         super(ctx, {
             ...options,
             event: Events.MessageCreate,
@@ -22,7 +22,7 @@ export class MentionLimit extends Listener {
                 let count = this.MENTIONS[user] -= 5;
                 if (count <= 0) delete this.MENTIONS[user];
             }
-        }, parseDuration("30m"));
+        }, parseDuration("30m")!);
     }
 
     override async run(message: Message<true>) {

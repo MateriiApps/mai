@@ -14,7 +14,7 @@ const APPS = [
 ];
 
 export class Downloads extends Command {
-    public constructor(ctx: Command.Context, options: Command.Options) {
+    public constructor(ctx: Command.LoaderContext, options: Command.Options) {
         super(ctx, {
             ...options,
             name: "downloads",
@@ -88,7 +88,7 @@ export class Downloads extends Command {
         const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
         if (!GITHUB_TOKEN) throw "missing env GITHUB_TOKEN";
 
-        const res = await fetch("https://api.github.com/graphql", {
+        const res: any = await fetch("https://api.github.com/graphql", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -103,7 +103,9 @@ export class Downloads extends Command {
         const repository = res.data.repository;
         if (!repository) return null;
 
-        const downloadCount = repository.releases.nodes.reduce((acc, release) => acc + release.releaseAssets.nodes.reduce((acc, asset) => acc + asset.downloadCount ?? 0, 0), 0);
+        const downloadCount = repository.releases.nodes.reduce(
+            (acc: number, release: any) => acc + release.releaseAssets.nodes.reduce(
+                (acc: number, asset: any) => acc + (asset.downloadCount ?? 0), 0), 0);
         const { hasNextPage, endCursor: nextCursor } = repository.releases.pageInfo;
 
         if (hasNextPage) {

@@ -9,7 +9,7 @@ import { log } from "node:console"
 // Credit: https://codeberg.org/Ven/Vaius/src/commit/cd42a0ec59b03783cec678c911651f3ef02174ad/src/commands/eval.ts
 
 export class Eval extends Command {
-    public constructor(ctx: Command.Context, options: Command.Options) {
+    public constructor(ctx: Command.LoaderContext, options: Command.Options) {
         super(ctx, {
             ...options,
             name: "eval",
@@ -19,6 +19,7 @@ export class Eval extends Command {
     }
 
     override async messageRun(message: Message, args: Args) {
+        if (!message.channel.isSendable()) return;
         await message.channel.sendTyping();
 
         let code = await args.rest('string').catch(_ => null);
@@ -45,7 +46,7 @@ export class Eval extends Command {
         // noinspection JSUnusedLocalSymbols
         const Discord = await import("discord.js");
 
-        let result;
+        let result: any;
         try {
             result = await eval(code)
         } catch (e: any) {

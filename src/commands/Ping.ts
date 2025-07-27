@@ -4,7 +4,7 @@ import { ApplicationCommandRegistry, Args, Command, MessageCommand } from "@sapp
 import { ChatInputCommandInteraction, Message } from "discord.js";
 
 export class Ping extends Command {
-    public constructor(ctx: Command.Context, options: Command.Options) {
+    public constructor(ctx: Command.LoaderContext, options: Command.Options) {
         super(ctx, {
             ...options,
             name: "ping",

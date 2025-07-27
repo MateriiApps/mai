@@ -5,7 +5,7 @@ import { ChatInputCommandInteraction, Message, TextChannel } from "discord.js";
 import { sleep } from "../util";
 
 export class Purge extends Command {
-    public constructor(ctx: Command.Context, options: Command.Options) {
+    public constructor(ctx: Command.LoaderContext, options: Command.Options) {
         super(ctx, {
             ...options,
             name: "purge",
@@ -32,9 +32,9 @@ export class Purge extends Command {
                 .setDescription("Make this interaction ephemeral")))
     }
 
-    // FIXME: doesn't get called for some reason
     override async messageRun(message: Message, args: Args) {
-        console.log("here");
+        if (!message.channel.isSendable()) return;
+
         const count = (await args.pickResult('integer')).unwrapOr(0)
         if (count < 1 || count > 100) return;
 

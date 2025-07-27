@@ -13,10 +13,10 @@
   "author": "rushii (https://github.com/rushiiMachine)",
   "license": "GPL-3.0",
   "dependencies": {
-    "@sapphire/framework": "^4.5.0",
-    "discord.js": "14.x",
-    "node-html-parser": "^6.1.5",
-    "parse-duration": "^1.1.0",
+    "@sapphire/framework": "^5.3.6",
+    "discord.js": "14.21.0",
+    "node-html-parser": "^7.0.1",
+    "parse-duration": "^2.1.4",
     "sanitize-filename": "^1.6.3",
     "short-number": "^1.0.7",
     "snowflake-regex": "^1.0.4",
@@ -30,4 +30,5 @@
     "node": ">=22"
   },
   "engineStrict": true,
+  "packageManager": "pnpm@10.13.1+sha512.37ebf1a5c7a30d5fabe0c5df44ee8da4c965ca0c5af3dbab28c3a1681b70a256218d05c81c9c0dcf767ef6b8551eb5b960042b9ed4300c59242336377e01cfad"
 }

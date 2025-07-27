@@ -10,7 +10,7 @@ const snowflakeRegex = snowflakeRegexModule.default;
 export const PASSPORT_USERS: Snowflake[] = [];
 
 export class Passport extends Command {
-    public constructor(ctx: Command.Context, options: Command.Options) {
+    public constructor(ctx: Command.LoaderContext, options: Command.Options) {
         super(ctx, {
             ...options,
             name: "passport",

@@ -4,7 +4,7 @@ import { Events, Listener } from "@sapphire/framework";
 import { GuildMember } from "discord.js";
 
 export class NormalizeNick extends Listener {
-    public constructor(ctx: Listener.Context, options: Listener.Options) {
+    public constructor(ctx: Listener.LoaderContext, options: Listener.Options) {
         super(ctx, {
             ...options,
             event: Events.GuildMemberUpdate,

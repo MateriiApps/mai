@@ -3,3 +3,4 @@ dist
 *.iml
 vscode
 node_modules
+tsconfig.tsbuildinfo

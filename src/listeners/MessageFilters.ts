@@ -32,7 +32,7 @@ enum Result {
 export class MessageFilters extends Listener {
     readonly FILTERS: FilterGroup[] = [];
 
-    public constructor(ctx: Listener.Context, options: Listener.Options) {
+    public constructor(ctx: Listener.LoaderContext, options: Listener.Options) {
         super(ctx, {
             ...options,
             event: Events.MessageCreate,
@@ -51,7 +51,7 @@ export class MessageFilters extends Listener {
         for (const { name: groupName, filters } of this.FILTERS) {
             for (const filter of filters) {
                 let matches = false;
-                let filterName;
+                let filterName: string;
 
                 if ("match" in filter) {
                     matches = message.content.includes(filter.match);
@@ -93,7 +93,7 @@ export class MessageFilters extends Listener {
                 .filter(Boolean)
                 .map(line => JSON.parse(line))
                 .map(filter => {
-                    let result;
+                    let result: Result;
                     switch (filter.result.toLowerCase()) {
                         case "ban":
                             result = Result.Ban;
